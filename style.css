@@ -1,0 +1,261 @@
+/* 기본 리셋 & CSS 변수 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+:root {
+    --primary-color: #13695c;
+    --primary-hover: #0e4f45;
+    --primary-light: #e8f3f1;
+    --text-dark: #2c3e50;
+    --text-muted: #667085;
+    --bg-gradient: linear-gradient(135deg, #f0f7f5 0%, #d5e8e4 100%);
+    --card-bg: #ffffff;
+    --shadow: 0 15px 35px rgba(19, 105, 92, 0.12);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    padding: 20px;
+}
+
+/* 프로필 카드 메인 컨테이너 */
+.card-container {
+    width: 100%;
+    max-width: 380px;
+    background: var(--card-bg);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.card-container:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(19, 105, 92, 0.18);
+}
+
+/* 상단 상단 배경 영역 및 원형 이미지 */
+.card-header {
+    height: 120px;
+    background-color: var(--primary-color);
+    background-image: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.avatar-wrapper {
+    position: absolute;
+    bottom: -50px;
+    width: 110px;
+    height: 110px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--card-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge {
+    position: absolute;
+    bottom: 6px;
+    right: 6px;
+    width: 16px;
+    height: 16px;
+    background-color: #22c55e;
+    border: 3px solid var(--card-bg);
+    border-radius: 50%;
+}
+
+/* 본문 내용 */
+.card-body {
+    padding: 65px 28px 32px 28px;
+    text-align: center;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.role {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bio {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    word-break: keep-all;
+}
+
+/* SNS 버튼 스타일 */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* 연락하기 버튼 */
+.contact-btn {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.contact-btn:hover {
+    background-color: var(--primary-hover);
+}
+
+.contact-btn:active {
+    transform: scale(0.98);
+}
+
+/* 모달 레이어 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 100;
+    padding: 20px;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: #ffffff;
+    padding: 28px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 340px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.modal h3 {
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    font-size: 1.25rem;
+}
+
+.modal p {
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.copy-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 10px;
+    background: var(--primary-light);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+/* 모바일 전용 미디어 쿼리 */
+@media (max-width: 360px) {
+    .card-body {
+        padding: 55px 20px 24px 20px;
+    }
+    
+    .social-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+}

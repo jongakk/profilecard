@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로필 카드</title>
+    <!-- Font Awesome 아이콘 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-container">
+        <!-- 상단 헤더 & 원형 프로필 이미지 -->
+        <div class="card-header">
+            <div class="avatar-wrapper">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=500&auto=format&fit=crop" alt="프로필 사진" class="profile-img">
+                <span class="status-badge" title="온라인"></span>
+            </div>
+        </div>
+
+        <!-- 프로필 정보 -->
+        <div class="card-body">
+            <h2 class="name">김지민</h2>
+            <p class="role">UI/UX Designer & Developer</p>
+            <p class="bio">사용자 경험을 개선하고 아름다운 웹을 만드는 데 열정을 가진 프론트엔드 개발자입니다.</p>
+
+            <!-- SNS 아이콘 3개 -->
+            <div class="social-links">
+                <a href="https://github.com" target="_blank" class="social-icon" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+
+            <button class="contact-btn" id="contactBtn">
+                <i class="far fa-envelope"></i> 연락하기
+            </button>
+        </div>
+    </div>
+
+    <!-- 연락처 모달 팝업 -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="close-btn" id="closeBtn">&times;</button>
+            <h3><i class="fas fa-paper-plane"></i> Contact Info</h3>
+            <p>이메일: <strong>jimin.kim@example.com</strong></p>
+            <p>전화번호: <strong>010-1234-5678</strong></p>
+            <button class="copy-btn" id="copyBtn">이메일 주소 복사하기</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
