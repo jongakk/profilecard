@@ -1,41 +1,49 @@
-// DOM 요소
-const contactBtn = document.getElementById('contactBtn');
-const modalOverlay = document.getElementById('modalOverlay');
-const closeBtn = document.getElementById('closeBtn');
-const copyBtn = document.getElementById('copyBtn');
+const year = document.getElementById("year");
+const themeButton = document.getElementById("themeButton");
+const shareButton = document.getElementById("shareButton");
 
-// 모달 열기
-contactBtn.addEventListener('click', () => {
-    modalOverlay.classList.add('active');
+// Footer 연도 자동 표시
+year.textContent = new Date().getFullYear();
+
+// 라이트 / 다크 테마 변경
+themeButton.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+
+  const isLight = document.body.classList.contains("light");
+
+  themeButton.textContent = isLight ? "☾" : "☼";
+  themeButton.setAttribute(
+    "aria-label",
+    isLight ? "다크 테마로 변경" : "라이트 테마로 변경"
+  );
 });
 
-// 모달 닫기
-closeBtn.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-});
+// 페이지 공유
+shareButton.addEventListener("click", async () => {
+  const shareData = {
+    title: document.title,
+    text: "Network Security Engineer Profile",
+    url: window.location.href
+  };
 
-// 배경 클릭 시 모달 닫기
-modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-        modalOverlay.classList.remove('active');
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+    } catch (error) {
+      // 사용자가 공유 창을 닫은 경우
     }
-});
+    return;
+  }
 
-// 이메일 클립보드 복사
-copyBtn.addEventListener('click', () => {
-    const email = 'jimin.kim@example.com';
-    navigator.clipboard.writeText(email).then(() => {
-        const originalText = copyBtn.textContent;
-        copyBtn.textContent = '복사 완료!';
-        copyBtn.style.backgroundColor = 'var(--primary-color)';
-        copyBtn.style.color = '#ffffff';
+  try {
+    await navigator.clipboard.writeText(window.location.href);
 
-        setTimeout(() => {
-            copyBtn.textContent = originalText;
-            copyBtn.style.backgroundColor = '';
-            copyBtn.style.color = '';
-        }, 2000);
-    }).catch(() => {
-        alert('복사에 실패했습니다.');
-    });
+    shareButton.textContent = "✓";
+
+    setTimeout(() => {
+      shareButton.textContent = "↗";
+    }, 1500);
+  } catch (error) {
+    alert("현재 페이지 주소를 복사할 수 없습니다.");
+  }
 });
