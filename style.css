@@ -141,7 +141,7 @@ h1 {
 }
 
 section {
-  margin-top: 28px;
+  margin-top: 38px;
 }
 
 section h2 {
@@ -151,14 +151,14 @@ section h2 {
 }
 
 .section-description {
-  margin-top: 9px;
+  margin-top: 12px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.65;
 }
 
 .info-list {
-  margin-top: 18px;
+  margin-top: 22px;
   padding: 18px;
   border: 1px solid rgba(255,255,255,0.16);
   border-radius: 18px;
@@ -172,7 +172,7 @@ section h2 {
 }
 
 .info-item + .info-item {
-  margin-top: 17px;
+  margin-top: 20px;
 }
 
 .info-icon {
@@ -226,9 +226,9 @@ section h2 {
 }
 
 .notion-list {
-  margin-top: 18px;
+  margin-top: 22px;
   display: grid;
-  gap: 10px;
+  gap: 12px;
 }
 
 .notion-card {
@@ -288,7 +288,7 @@ section h2 {
 .all-projects-link {
   width: min(100%, 280px);
   min-height: 48px;
-  margin: 10px auto 0;
+  margin: 14px auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -308,7 +308,7 @@ section h2 {
 }
 
 .links-section {
-  margin-top: 22px;
+  margin-top: 30px;
 }
 
 .social-links {
@@ -361,11 +361,11 @@ section h2 {
 }
 
 .contact-button {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 footer {
-  margin-top: 22px;
+  margin-top: 28px;
   padding-top: 17px;
   border-top: 1px solid var(--line);
   text-align: center;
@@ -478,7 +478,7 @@ body.light .all-projects-link {
   }
 
   section {
-    margin-top: 24px;
+    margin-top: 30px;
   }
 
   section h2 {
