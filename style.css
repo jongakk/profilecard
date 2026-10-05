@@ -13,7 +13,8 @@
   --line: rgba(255, 255, 255, 0.25);
   --black: #050908;
   --notion: rgba(4, 35, 30, 0.48);
-  --accent: #d8edc9;
+  --accent: #c5a43d;
+  --coral: #f0d8cc;
 }
 
 html {
@@ -58,27 +59,29 @@ a {
 
 .profile-header {
   position: relative;
-  padding: 0;
+  margin: 0 -34px;
   text-align: center;
   background: transparent;
 }
 
 .top-actions {
-  position: relative;
+  position: absolute;
+  top: 18px;
+  left: 34px;
+  right: 34px;
   z-index: 2;
   display: flex;
   justify-content: space-between;
-  margin: 0 0 14px;
-  padding: 18px 0 0;
 }
 
 .profile-cover {
   position: relative;
   height: 320px;
-  margin: -18px 0 18px;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,0) 56%, rgba(12, 22, 19, 0.86) 100%),
-    url('bg.jpg') center / cover no-repeat;
+  margin: 0 0 18px;
+  border-radius: 30px 30px 0 0;
+  background: url('bg.jpg') center / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 68%, transparent 100%);
 }
 
 .icon-button {
@@ -103,18 +106,21 @@ a {
 }
 
 h1 {
+  padding: 0 34px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(30px, 7vw, 40px);
   letter-spacing: -1px;
 }
 
 .role {
+  padding: 0 34px;
   margin-top: 8px;
   font-size: 16px;
   font-weight: 700;
 }
 
 .tagline {
+  padding: 0 34px;
   margin-top: 15px;
   color: var(--muted);
   font-size: 14px;
@@ -123,11 +129,12 @@ h1 {
 
 .divider {
   height: 1px;
-  margin: 22px 0 16px;
+  margin: 22px 34px 16px;
   background: var(--line);
 }
 
 .event-title {
+  padding: 0 34px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 16px;
   font-weight: 700;
@@ -175,7 +182,7 @@ section h2 {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--coral);
   color: #194d42;
   font-size: 17px;
   font-weight: 800;
@@ -239,7 +246,7 @@ section h2 {
 .notion-card:hover {
   transform: translateY(-2px);
   background: rgba(4, 35, 30, 0.68);
-  border-color: rgba(216,237,201,0.25);
+  border-color: rgba(197,164,61,0.35);
 }
 
 .notion-icon {
@@ -249,7 +256,7 @@ section h2 {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--coral);
   color: #1b5146;
   font-size: 21px;
   font-weight: 800;
@@ -278,20 +285,44 @@ section h2 {
   opacity: 0.9;
 }
 
+.all-projects-link {
+  width: min(100%, 280px);
+  min-height: 48px;
+  margin: 10px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 13px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  transition: transform 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.all-projects-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
 .links-section {
   margin-top: 22px;
 }
 
 .social-links {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: min(100%, 280px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: center;
-  gap: 25px;
   padding: 3px 0 7px;
 }
 
 .social-links a {
-  width: 34px;
+  width: auto;
   height: 34px;
   display: grid;
   place-items: center;
@@ -299,6 +330,29 @@ section h2 {
   font-size: 13px;
   font-weight: 800;
   transition: transform 0.2s, opacity 0.2s;
+}
+
+.social-links::before {
+  content: "";
+  position: absolute;
+  inset: 3px 0 7px;
+  pointer-events: none;
+  background:
+    linear-gradient(to right,
+      transparent 0,
+      transparent calc(25% - 0.5px),
+      var(--line) calc(25% - 0.5px),
+      var(--line) calc(25% + 0.5px),
+      transparent calc(25% + 0.5px),
+      transparent calc(50% - 0.5px),
+      var(--line) calc(50% - 0.5px),
+      var(--line) calc(50% + 0.5px),
+      transparent calc(50% + 0.5px),
+      transparent calc(75% - 0.5px),
+      var(--line) calc(75% - 0.5px),
+      var(--line) calc(75% + 0.5px),
+      transparent calc(75% + 0.5px),
+      transparent 100%);
 }
 
 .social-links a:hover {
@@ -330,7 +384,8 @@ body.light {
   --muted: #5b746e;
   --line: rgba(23, 58, 52, 0.18);
   --notion: #edf5f1;
-  --accent: #d7ebc9;
+  --accent: #b08d26;
+  --coral: #efd5ca;
 }
 
 body.light .profile-card {
@@ -347,6 +402,20 @@ body.light .notion-card:hover {
   background: #e4f0eb;
 }
 
+body.light .info-list {
+  border-color: rgba(176, 141, 38, 0.5);
+  background: rgba(237, 245, 241, 0.72);
+}
+
+body.light .notion-card {
+  border-color: rgba(176, 141, 38, 0.5);
+  box-shadow: 0 3px 12px rgba(24, 66, 57, 0.04);
+}
+
+body.light .all-projects-link {
+  border-color: rgba(176, 141, 38, 0.5);
+}
+
 @media (max-width: 480px) {
   body {
     padding: 0;
@@ -360,6 +429,29 @@ body.light .notion-card:hover {
     border: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  .profile-header {
+    margin: -22px -18px 0;
+  }
+
+  .top-actions {
+    top: 30px;
+    left: 34px;
+    right: 34px;
+    margin-bottom: 0;
+  }
+
+  .profile-cover {
+    border-radius: 0;
+  }
+
+  h1,
+  .role,
+  .tagline,
+  .event-title {
+    padding-right: 18px;
+    padding-left: 18px;
   }
 
   .top-actions {
@@ -382,7 +474,7 @@ body.light .notion-card:hover {
   }
 
   .divider {
-    margin: 18px 0 13px;
+    margin: 18px 18px 13px;
   }
 
   section {
@@ -409,7 +501,7 @@ body.light .notion-card:hover {
   }
 
   .social-links {
-    gap: 17px;
+    gap: 0;
   }
 }
 
@@ -424,7 +516,7 @@ body.light .notion-card:hover {
   }
 
   .social-links {
-    gap: 11px;
+    gap: 0;
   }
 }
 
